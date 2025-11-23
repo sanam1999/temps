@@ -64,7 +64,7 @@ app.get('/', (req, res) => {
     res.send(`
         <html>
             <body>
-                <h1>api is working</h1>
+                <h1>api is working...</h1>
             </body>
         </html>
     `);
@@ -73,7 +73,7 @@ app.get('/home', (req, res) => {
     res.send(`
         <html>
             <body>
-                <h1>Let's do this</h1>
+                <h1>Let's do this...</h1>
             </body>
         </html>
     `);
