@@ -60,10 +60,11 @@ app.use((req, res, next) => {
 
 
 // Routes
-app.use('/user', userRouter);
 app.get('/', (req, res) => {
    return res.send("api is working");
 } );
+app.use('/user', userRouter);
+
 // 404 handler
 app.all('*', (req, res) => {
     res.status(404).json({ error: "Route not found" });
