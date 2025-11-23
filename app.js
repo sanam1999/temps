@@ -63,11 +63,17 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => {
     res.send(`
         <html>
-            <head>
-                <title>Hello</title>
-            </head>
             <body>
-                <h1>hello</h1>
+                <h1>api is working</h1>
+            </body>
+        </html>
+    `);
+});
+app.get('/home', (req, res) => {
+    res.send(`
+        <html>
+            <body>
+                <h1>Let's do this</h1>
             </body>
         </html>
     `);
