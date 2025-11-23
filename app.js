@@ -60,8 +60,8 @@ app.use((req, res, next) => {
 
 
 // Routes
-app.get('/', (req, res) => {
-   return res.send("api is working");
+app.get('/name', (req, res) => {
+   return res.send("who am i");
 } );
 app.use('/user', userRouter);
 
