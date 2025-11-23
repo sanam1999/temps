@@ -60,9 +60,19 @@ app.use((req, res, next) => {
 
 
 // Routes
-app.get('/name', (req, res) => {
-   return res.send("who am i");
-} );
+app.get('/', (req, res) => {
+    res.send(`
+        <html>
+            <head>
+                <title>Hello</title>
+            </head>
+            <body>
+                <h1>hello</h1>
+            </body>
+        </html>
+    `);
+});
+
 app.use('/user', userRouter);
 
 // 404 handler
