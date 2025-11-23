@@ -1,8 +1,5 @@
 const User = require("../Model/user");
-const Post = require("../Model/Post");
-const Story = require("../Model/Story");
-const FoodPost = require("../Model/Foodpost");
-const Account  =  require("../Model/Account")
+
 
 
 
