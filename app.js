@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
@@ -7,13 +8,14 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./Model/user')
 const userRouter = require('./router/user')
+const postRounts = require('./router/post')
 const cors = require("cors");
 const path = require("path");
 
 const app = express();
 
-const MONGO_URI = "mongodb+srv://c2sh:Hakunamatata99@cluster0.ojj3i.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-mongoose.connect(MONGO_URI)
+
+mongoose.connect(process.env.mongourl)
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.error('Error connecting to MongoDB:', err));
 
@@ -27,7 +29,7 @@ app.use('/image', express.static('image'));
 
 // Session setup
 const store = MongoStore.create({
-    mongoUrl: MONGO_URI,
+    mongoUrl: process.env.mongourl,
     crypto: { secret: "yourSessionSecret" },
     touchAfter: 24 * 60 * 60,
 });
@@ -43,6 +45,9 @@ app.use(
         },
     })
 );
+
+
+
 
 // Passport setup
 app.use(passport.initialize());
@@ -69,16 +74,8 @@ app.get('/', (req, res) => {
         </html>
     `);
 });
-app.get('/home', (req, res) => {
-    res.send(`
-        <html>
-            <body>
-                <h1>Let's do this...</h1>
-            </body>
-        </html>
-    `);
-});
 
+app.use('/getpost', postRounts)
 app.use('/user', userRouter);
 
 // 404 handler
@@ -97,3 +94,9 @@ const PORT = 8000;
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
+
+
+
+
+// const {runSeed} = require("./seedpost")
+// runSeed()
