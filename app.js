@@ -66,13 +66,15 @@ app.use((req, res, next) => {
 
 // Routes
 app.get('/', (req, res) => {
-    res.send(`
-        <html>
-            <body>
-                <h1>api is working...</h1>
-            </body>
-        </html>
-    `);
+    const sriLankaTime = new Date().toLocaleString("en-US", {
+        timeZone: "Asia/Colombo",
+        dateStyle: "full",
+        timeStyle: "medium"
+    });
+
+    res.json({
+        time: sriLankaTime
+    });
 });
 
 app.use('/getpost', postRounts)
